@@ -12,7 +12,7 @@ class SearchEmails(Data):
     def search_emails_by_text(self):
         self.founded_emails = self.drop_email_duplicates()[self.drop_email_duplicates().str.contains(self.str_phrase)]
 
-    def count_founded_emails(self):
+    def count_founded_emails(self) -> int:
         number_of_founded_emails = self.founded_emails.count()
 
         return number_of_founded_emails

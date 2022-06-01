@@ -19,8 +19,10 @@ class GroupEmails(Data):
 
     def __str__(self):
         domains = list(sorted(set(d for d, _, in self.grouped_emails.index)))
+
         output = ''
         for domain in domains:
+
             emails = '\n\t'.join(self.grouped_emails.loc[domain].reset_index()['email'].values.tolist())
             output += f"Domain {domain} ({len(self.grouped_emails.loc[domain])}) \n\t{emails}\n"
 
