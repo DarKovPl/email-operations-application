@@ -34,12 +34,30 @@ def find_emails_not_in_logs(path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-ic', '--incorrect-emails', action='store_true', help='give argument')
-    parser.add_argument('-s', '--search', action='store', type=str, help='sjnjs')
-    parser.add_argument('-gbd', '--group-by-domain', action='store_true')
-    parser.add_argument('-feil', '--find-emails-not-in-logs', action='store', type=str)
+    parser.add_argument(
+        "-ic", "--incorrect-emails", action="store_true", help="Show incorrect emails."
+    )
+    parser.add_argument(
+        "-s",
+        "--search",
+        action="store",
+        type=str,
+        metavar="[Write phrase of searching email(s) adress(es)]",
+        help="Search emails by phrase.",
+    )
+    parser.add_argument(
+        "-gbd", "--group-by-domain", action="store_true", help="Group emails by domain."
+    )
+    parser.add_argument(
+        "-feil",
+        "--find-emails-not-in-logs",
+        action="store",
+        type=str,
+        metavar="[Write a path to logs file]",
+        help="Find emails that are not in the logs file.",
+    )
 
-    args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
+    args = parser.parse_args(args=None if sys.argv[1:] else ["--help"])
 
     if args.incorrect_emails:
         incorrect_emails()
