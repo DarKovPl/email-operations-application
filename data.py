@@ -5,13 +5,13 @@ import error_handling
 
 
 class Data:
-    def __init__(self, emails_not_in_logs_path=None):
+    def __init__(self, emails_logs_file_path=None):
 
-        self.folder_path = ["files", "emails"]
-        self.folder_for_emails = os.path.join(os.getcwd(), *self.folder_path)
-        self.emails_not_in_logs_path = emails_not_in_logs_path
+        self.folders_names = ["files", "emails"]
+        self.folder_for_emails = os.path.join(os.getcwd(), *self.folders_names)
+        self.emails_logs_file_path = emails_logs_file_path
         self.correct_email_pattern: str = (
-            "[0-9a-zA-Z._%+-]+@[0-9a-zA-Z.-]+\\.[A-Za-z]{2,4}"
+             r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,4}$'
         )
 
     def get_email_data_path(self) -> list:
@@ -25,13 +25,13 @@ class Data:
         return files_paths
 
     def get_logs_data_path(self) -> str:
-        file_path = self.emails_not_in_logs_path
+        file_path = self.emails_logs_file_path
 
         if os.path.isfile(file_path) and file_path.endswith(".logs"):
             return file_path
 
         else:
-            raise error_handling.FileNotFoundException(self.emails_not_in_logs_path)
+            raise error_handling.FileNotFoundException(self.emails_logs_file_path)
 
     def filter_email_logs(self):
         logs = pd.read_csv(self.get_logs_data_path(), delimiter=" ", header=None)
@@ -50,11 +50,12 @@ class Data:
 
         emails_df: pd.DataFrame = pd.concat(emails)
         emails_df.reset_index(drop=True, inplace=True)
-        merged_emails = emails_df.squeeze()
+        merged_emails = emails_df.squeeze().sort_values()
 
         return merged_emails
 
-    def filter_correct_emails(self) -> pd.Series:
+    def filter_correct_emails(self) -> pd.Series(bool):
+
         correct_emails = self.create_one_emails_dataset().map(
             lambda x: bool(regex.match(self.correct_email_pattern, x))
         )

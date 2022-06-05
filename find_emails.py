@@ -3,8 +3,8 @@ import pandas as pd
 
 
 class FindEmails(Data):
-    def __init__(self, emails_not_in_logs_path):
-        super(FindEmails, self).__init__(emails_not_in_logs_path)
+    def __init__(self, emails_logs_file_path):
+        super(FindEmails, self).__init__(emails_logs_file_path)
         self.emails_not_in_log = pd.Series([], dtype=pd.StringDtype())
 
     def find_emails_not_in_logs(self):

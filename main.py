@@ -1,4 +1,4 @@
-from incorrect_emails import IncorrectEmails
+from incorrect_emails import IncorrectEmailsAddresses
 from search_emails import SearchEmails
 from group_emails import GroupEmails
 from find_emails import FindEmails
@@ -8,7 +8,7 @@ import sys
 
 
 def incorrect_emails():
-    wrong_emails = IncorrectEmails()
+    wrong_emails = IncorrectEmailsAddresses()
     wrong_emails.search_incorrect_emails()
     print(wrong_emails.__str__())
 
@@ -41,8 +41,9 @@ if __name__ == "__main__":
         "-s",
         "--search",
         action="store",
+        default=' ',
         type=str,
-        metavar="[Write phrase of searching email(s) adress(es)]",
+        metavar="[Write phrase of searching email(s) address(es)]",
         help="Search emails by phrase.",
     )
     parser.add_argument(
