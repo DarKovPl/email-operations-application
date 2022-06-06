@@ -29,11 +29,11 @@ def test_find_emails_not_in_logs(find_emails):
     series_from_app = find_emails.emails_not_in_log
 
     expected_series = pd.Series(
-        data=["hill.delmer@hotmail.com", "breilly@yahoo.com"], name="email"
+        data=["hill.delmer@hotmail.com", "breilly@yahoo.com", "extra_6@oo.c02", "extra_7@oo.667"], name="email"
     ).sort_values()
 
     pd.testing.assert_series_equal(series_from_app, expected_series, check_index=False)
 
 
 def test_count_emails_not_sent(find_emails):
-    assert find_emails.count_emails_not_sent() == 2
+    assert find_emails.count_emails_not_sent() == 4

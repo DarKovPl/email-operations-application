@@ -37,6 +37,8 @@ def test_group_emails(group_emails):
             ["hotmail.com", "okon.adrianna@hotmail.com"],
             ["leuschke.net", "pmayer@leuschke.net"],
             ["mcclure.com", "walker.providenci@mcclure.com"],
+            ["oo.667", "extra_7@oo.667"],
+            ["oo.c02", "extra_6@oo.c02"],
             ["reynolds.biz", "opal69@reynolds.biz"],
             ["steuber.com", "cgislason@steuber.com"],
             ["yahoo.com", "breilly@yahoo.com"],
@@ -47,7 +49,7 @@ def test_group_emails(group_emails):
     expected_frame = pd.DataFrame(
         index=pd.MultiIndex.from_frame(multi_index),
         columns=["index"],
-        data=[3, 4, 5, 17, 12, 16, 0, 14, 2],
+        data=[3, 4, 5, 17, 12, 28, 27, 16, 0, 14, 2],
     )
 
     pd.testing.assert_frame_equal(frame_from_app, expected_frame)

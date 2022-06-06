@@ -47,7 +47,7 @@ def test_search_incorrect_emails(wrong_addresses):
             "extra_2@oo.^o^",
             "extra_3@@oo.com",
             "extra@5@oo.com",
-            "e*tra_6@oo.c02",
+            "extra_8@oo."
         ],
         name="email",
     ).sort_values()

@@ -47,7 +47,9 @@ def tmpdir(tmpdir):
         "extra_2@oo.^o^\n"
         "extra_3@@oo.com\n"
         "extra@5@oo.com\n"
-        "e*tra_6@oo.c02"
+        "extra_6@oo.c02\n"
+        "extra_7@oo.667\n"
+        "extra_8@oo."
     )
 
     f_2 = tmp_dir.join("test_emails_file.csv")
@@ -103,7 +105,9 @@ def merged_expected_series_data():
             "extra_2@oo.^o^",
             "extra_3@@oo.com",
             "extra@5@oo.com",
-            "e*tra_6@oo.c02",
+            "extra_6@oo.c02",
+            "extra_7@oo.667",
+            "extra_8@oo."
         ],
         name="email",
     ).sort_values()
@@ -127,6 +131,8 @@ def filtered_expected_series_data():
             "makenna90@hessel.net",
             "hill.delmer@hotmail.com",
             "okon.adrianna@hotmail.com",
+            "extra_6@oo.c02",
+            "extra_7@oo.667"
         ],
         name="email",
     ).sort_values()

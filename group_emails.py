@@ -25,6 +25,6 @@ class GroupEmails(Data):
             emails = "\n\t".join(
                 self.grouped_emails.loc[domain].reset_index()["email"].values.tolist()
             )
-            output += f"Domain {domain} ({len(self.grouped_emails.loc[domain])}) \n\t{emails}\n"
+            output += f"Domain {domain} ({len(self.grouped_emails.loc[domain])}): \n\t{emails}\n"
 
         return output

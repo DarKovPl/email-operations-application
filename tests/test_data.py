@@ -114,6 +114,8 @@ def test_drop_email_duplicates(data):
             "makenna90@hessel.net",
             "hill.delmer@hotmail.com",
             "okon.adrianna@hotmail.com",
+            "extra_6@oo.c02",
+            "extra_7@oo.667"
         ],
         name="email",
     ).sort_values()
