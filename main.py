@@ -1,3 +1,5 @@
+import os.path
+
 from incorrect_emails import IncorrectEmailsAddresses
 from search_emails import SearchEmails
 from group_emails import GroupEmails
@@ -32,7 +34,12 @@ def find_emails_not_in_logs(path):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="In a Docker container the main.py file is run automatically, "
+                    "and you have to write only parameters that you want to launch. "
+                    "Example app usage: docker run interapp --incorrect-emails; "
+                    "Example test mode usage: docker run --entrypoint pytest -vv interapp"
+    )
 
     parser.add_argument(
         "-ic", "--incorrect-emails", action="store_true", help="Show incorrect emails."
@@ -41,21 +48,23 @@ if __name__ == "__main__":
         "-s",
         "--search",
         action="store",
-        default=' ',
         type=str,
-        metavar="[Write phrase of searching email(s) address(es)]",
+        metavar="[Write phrase of searching emails addresses]",
         help="Search emails by phrase.",
     )
     parser.add_argument(
         "-gbd", "--group-by-domain", action="store_true", help="Group emails by domain."
     )
+
     parser.add_argument(
         "-feil",
         "--find-emails-not-in-logs",
-        action="store",
         type=str,
-        metavar="[Write a path to logs file]",
-        help="Find emails that are not in the logs file.",
+        metavar="Write a path to logs file",
+        nargs='?',
+        const=str(os.path.join('files', 'email-sent.logs')),
+        help="Find emails that are not in the logs file. "
+             "There is a set path by default, but you can write your own path to a .logs file.",
     )
 
     args = parser.parse_args(args=None if sys.argv[1:] else ["--help"])
