@@ -8,15 +8,6 @@ from find_emails import FindEmails
 import argparse
 import sys
 
-"""
-Hi, I also did some code review in the last recruitment task from you, and if you want to look and evaluate,
-I will be grateful. :) Here is a link to a repository:
-
-Requirement task https://www.balldontlie.io/:
-    https://github.com/DarKovPl/recruitment-task-backend-intership-2022
-
-"""
-
 
 def incorrect_emails():
     wrong_emails = IncorrectEmailsAddresses()
