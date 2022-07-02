@@ -35,7 +35,7 @@ This application performs some operations on emails and logs files, and show res
 * [Here is a link](https://docs.docker.com/engine/install/ubuntu/) explaining how to install Docker on Ubuntu.
 
 #### You will have to pull an image of the app:
-* [App image](docker pull dar2kov/interapp:latest)
+* `docker pull dar2kov/interapp:latest` 
 
 ### Virtual environment:
 #### In the beginning, you have to clone the repository from GitHub to your PC.
@@ -68,6 +68,7 @@ There is set a default path to a logs file, but you can add your own path manual
 * The main features are done, but I have some ideas, and it's a great practise exercise.
 
 ## To do:
+* I want to complete writing unit tests.. (current ~90%)
 * I want to create a docstring for each class...
 
 
