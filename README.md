@@ -1,5 +1,5 @@
 # Project Name
-> Recruitment task - backend internship 2022
+> Email Operations Application.
 
 ## Table of Contents
 * [General Info](#general-information)
